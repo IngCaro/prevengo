@@ -73,7 +73,7 @@ class Actividad extends CI_Controller
                     if($resultdbd){
                                 echo json_encode(array(
                                     "success"   => true,
-                                    "msg"       => "La actividad ha sido Completada exitosamente." //modificado en la base de datos
+                                    "msg"       => "La actividad ha sido Completada exitosamente" //modificado en la base de datos
                                 ));
                                     }
                             else{

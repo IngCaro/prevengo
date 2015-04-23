@@ -24,6 +24,12 @@ public function actualizarAvance($dataAvance){
         return  $this->db->update('avance');
     }
 
+public function cambiarEstatus($dataAvance){
+       
+         $this->db->set($dataAvance);
+     	$this->db->where('id', $dataAvance['id']);
+        return  $this->db->update('avance');
+    }
 
 
 

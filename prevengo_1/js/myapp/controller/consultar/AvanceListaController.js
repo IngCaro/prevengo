@@ -91,7 +91,7 @@ Ext.define('myapp.controller.consultar.AvanceListaController', {
         
         if(record[0]){              
                 Ext.Ajax.request({
-                    url: BASE_URL+'actividad/actividad/rechazarActividad',
+                    url: BASE_URL+'avance/avance/rechazarActividad',
                     method: 'POST',
                     params: {
                         record:record[0].get('id')
