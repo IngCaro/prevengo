@@ -128,6 +128,8 @@ CREATE TABLE IF NOT EXISTS `avance` (
 --
 -- Volcado de datos para la tabla `avance`
 --
+https://www.youtube.com/watch?v=A-MKUCSQiSs&list=RDHCKQ8mMrEQQ1o&index=27
+
 
 INSERT INTO `avance` (`idavance`, `idactividad`, `idusuario`, `descripcion`, `fechaasignacion`, `fecharegistro`, `tipo`, `costo`, `estatus`) VALUES
 (47, 1, 3, 'Se elaboró borrador inicial de bases', '2015-04-15', '2015-04-22', 1, 0, 0),

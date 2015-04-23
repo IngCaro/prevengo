@@ -228,11 +228,38 @@ class Avance extends CI_Controller
            echo json_encode($output);
         }else{
             echo json_encode(array(
-                "success"   => false
+                "success"   => false,
+                "msg" => "No hay datos para mostrar"
                 ));
         }
     } //fin Cargar Avance final
 
+ 
+     public function rechazarAvance()
+    {
+        //$Actividad= [];
 
+         $id = $this->input->post('record');
+         $estatus=3; // rechazar la actividad
+         
+            $data = array(  
+                            'id'   => $id,                  
+                            'estatus' => $estatus,
+                );
+         $resultdbd=$this->avance_model->cambiarEstatus($data);
+
+                    if($resultdbd){
+                                echo json_encode(array(
+                                    "success"   => true,
+                                    "msg"       => "El avance esta ha sido rechazado exitosamente." //modificado en la base de datos
+                                ));
+                                    }
+                            else{
+                                echo json_encode(array(
+                                    "success"   => false,
+                                    "msg"       => "No se pudo rechazar el avance." //no se modifico en la base de datos
+                                        ));
+                                }
+    }
 
 }//fin del controller

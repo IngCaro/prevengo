@@ -85,5 +85,6 @@ class Actividad extends CI_Controller
     }
 
 
+   
 
 }//fin del controller
