@@ -20,7 +20,7 @@ class Avance_model extends CI_Model{
 public function actualizarAvance($dataAvance){
        
          $this->db->set($dataAvance);
-     	$this->db->where('idavance', $dataAvance['idavance']);
+     	$this->db->where('id', $dataAvance['id']);
         return  $this->db->update('avance');
     }
 
@@ -32,7 +32,7 @@ public function consultarAvanceTipoFinal($actividad)
 
 
 
-     $sql="SELECT idactividad FROM avance where tipo=0  and idactividad=$actividad";
+     $sql="SELECT id FROM avance where tipo=0  and actividad=$actividad";
          $query = $this->db->query($sql);
         
      if ($query->num_rows() > 0){
@@ -55,9 +55,9 @@ public function consultarAvanceTipoFinal($actividad)
                      bdgenerica.persona.apellido AS apellido 
 
                 FROM prevengo.avance as av 
-                INNER JOIN actividad ON actividad.idactividad= av.idactividad 
-                INNER JOIN evento ON actividad.idevento=evento.idevento 
-                INNER JOIN bdgenerica.usuario ON av.idusuario= bdgenerica.usuario.id 
+                INNER JOIN actividad ON actividad.id= av.actividad 
+                INNER JOIN evento ON actividad.evento=evento.id 
+                INNER JOIN bdgenerica.usuario ON av.usuario= bdgenerica.usuario.id 
                 INNER JOIN bdgenerica.persona ON bdgenerica.usuario.cedula=bdgenerica.persona.cedula
                 WHERE av.estatus=0 
                 ORDER BY av.fecharegistro, av.tipo ASC";
@@ -70,7 +70,7 @@ public function consultarAvanceTipoFinal($actividad)
 
  public function consultarListaAvanceFinal(){
        
-        $sql="SELECT actividad.idactividad AS id, evento.titulo AS evento, 
+        $sql="SELECT actividad.id AS id, evento.titulo AS evento, 
                      av.descripcion AS descripcion, 
                      actividad.descripcion AS actividad, 
                      av.tipo AS tipo, 
@@ -79,9 +79,9 @@ public function consultarAvanceTipoFinal($actividad)
                      bdgenerica.persona.apellido AS apellido 
 
              FROM prevengo.avance AS av 
-             INNER JOIN actividad ON actividad.idactividad= av.idactividad 
-             INNER JOIN evento ON actividad.idevento=evento.idevento 
-             INNER JOIN bdgenerica.usuario ON av.idusuario= bdgenerica.usuario.id 
+             INNER JOIN actividad ON actividad.id= av.actividad 
+             INNER JOIN evento ON actividad.evento=evento.id 
+             INNER JOIN bdgenerica.usuario ON av.usuario= bdgenerica.usuario.id 
              INNER JOIN bdgenerica.persona ON bdgenerica.usuario.cedula=bdgenerica.persona.cedula 
              WHERE av.estatus=0 and av.tipo=0 
              ORDER BY av.fecharegistro, id ASC";

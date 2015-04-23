@@ -63,7 +63,12 @@ class Actividad extends CI_Controller
          $id = $this->input->post('record');
          //$Actividad =  json_decode($Actividad)
          $estatus=0;
-         $resultdbd=$this->actividad_model->cambiarEstatus($id,$estatus);
+         
+            $data[] = array(  
+                            'id'   => $id,                  
+                            'estatus' => $estatus,
+                );
+         $resultdbd=$this->actividad_model->cambiarEstatus($data);
 
                     if($resultdbd){
                                 echo json_encode(array(

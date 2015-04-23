@@ -77,7 +77,7 @@ Ext.define('myapp.view.registrar.Avance', {
                     id: 'cmbActividad',
                     editable      : false,
                     store         : Ext.create('myapp.store.actividad.ActividadStore'),
-                    valueField    : 'idactividad',
+                    valueField    : 'id',
                     displayField  : 'descripcion',
                     emptyText     :'Seleccione',
                     queryMode     : 'local',

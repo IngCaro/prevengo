@@ -43,7 +43,7 @@ class Avance extends CI_Controller
 
                              if($row['estatus']==1){
                                     $dataAvance = array(
-                                                      'idavance'       => $row['avance'],
+                                                      'id'       => $row['avance'],
                                                       'descripcion'    =>  $descripcion,             
                                                       'fecharegistro'  =>  $fecharegistro,
                                                       'fechaasignacion'=>  $row["fechaasignacion"], 
@@ -56,8 +56,8 @@ class Avance extends CI_Controller
                              } //if row
                              else 
                               {
-                                 $dataAvance = array('idactividad'    =>  $actividad,
-                                                     'idusuario'      =>  $usuario,
+                                 $dataAvance = array('actividad'    =>  $actividad,
+                                                     'usuario'      =>  $usuario,
                                                      'descripcion'    =>  $descripcion,
                                                      'fechaasignacion'=>  $row["fechaasignacion"],              
                                                      'fecharegistro'  =>  $fecharegistro,
@@ -75,15 +75,15 @@ class Avance extends CI_Controller
                          
                                        
                          //Actualiza el estatus de la actividad a "En Revision"       
-                      $dataActividad = array('idactividad'    =>  $actividad,
+                      $dataActividad = array('id'    =>  $actividad,
                                               'estatus'       =>  $estatusAct,
-                                               );
+                                              );
                       $resultad=$this->actividad_model->cambiarEstatus($dataActividad);
                    
                     }// iftipo
                    else { //tipo parcial
                          if($row['estatus']==1){
-                                $dataAvance = array('idavance'       => $row['avance'],
+                                $dataAvance = array('id'       => $row['avance'],
                                                   'descripcion'    =>  $descripcion,             
                                                   'fecharegistro'  =>  $fecharegistro,
                                                   'fechaasignacion'=>  $row["fechaasignacion"], 
@@ -94,7 +94,7 @@ class Avance extends CI_Controller
 
                                      $estatusAct=2;
                                     //Actualiza el estatus de la actividad a "En Ejecucion"   
-                                   $dataActividad = array('idactividad'    =>  $actividad,
+                                   $dataActividad = array('id'    =>  $actividad,
                                                           'estatus'        =>  $estatusAct,
                                          );
                                      $resultad=$this->actividad_model->cambiarEstatus($dataActividad);
@@ -104,8 +104,8 @@ class Avance extends CI_Controller
                          } //if row
                          else 
                           {
-                              $dataAvance = array('idactividad'   =>  $actividad,
-                                                 'idusuario'      =>  $usuario,
+                              $dataAvance = array('actividad'   =>  $actividad,
+                                                 'usuario'      =>  $usuario,
                                                  'descripcion'    =>  $descripcion,
                                                  'fechaasignacion'=>  $row["fechaasignacion"],              
                                                  'fecharegistro'  =>  $fecharegistro,
