@@ -210,7 +210,7 @@ class Avance extends CI_Controller
               $tipo='Final';
               $event="<font color=#3F77E6> Evento: ".$row['evento']."</font>";
                 $data[] = array(
-                            'idAct'       => $row['id'], 
+                            'id'       => $row['id'], 
                             'idAv'        => $row['idAv'], 
                             'evento'      => $event,
                             'actividad'   => $row['actividad'],                  
