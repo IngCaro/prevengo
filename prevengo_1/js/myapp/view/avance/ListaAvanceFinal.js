@@ -21,12 +21,20 @@ Ext.define('myapp.view.consultar.ListaAvanceFinal', {
             enableGroupingMenu: false
        }],
     store: Ext.create('myapp.store.avance.AvanceFinalStore'),
-    emptyText   : 'No hay datos registrados',
+    viewConfig: {
+        getRowClass: function (record, index) {
+            var tip = record.get('tipo');
+            if (tip == 0) {
+                return tipo = 'final';
+            }
+
+            else {
+                return tipo = 'parcial';
+            }
+        }
+    },
     selType: 'checkboxmodel',
     columnLines: true,
-    viewConfig: {
-
-    },
     initComponent: function () {
         var me = this;
         me.columns = me.buildColumns();
