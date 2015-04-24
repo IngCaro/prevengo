@@ -76,7 +76,9 @@ public function consultarAvanceTipoFinal($actividad)
 
  public function consultarListaAvanceFinal(){
        
-        $sql="SELECT actividad.id AS id, evento.titulo AS evento, 
+        $sql="SELECT actividad.id AS id,
+                     av.id AS idAv,
+                     evento.titulo AS evento, 
                      av.descripcion AS descripcion, 
                      actividad.descripcion AS actividad, 
                      av.tipo AS tipo, 

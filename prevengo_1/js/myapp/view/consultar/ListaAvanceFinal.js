@@ -69,6 +69,34 @@ Ext.define('myapp.view.consultar.ListaAvanceFinal', {
                     }
                 }
          },
+         
+          {
+                dataIndex: 'idAv',
+                hidden: true,
+                text: 'Id',
+                items: {
+                    xtype: 'textfield',
+                    flex: 1,
+                    margin: 2,
+                    enableKeyEvents: true,
+                    listeners: {
+                        keyup: function () {
+                            var store = this.up('grid').store;
+                            store.clearFilter();
+                            if (this.value) {
+                                store.filter({
+                                    property: 'evento',
+                                    value: this.value,
+                                    anyMatch: true,
+                                    caseSensitive: false
+                                });
+                            }
+                        },
+                        buffer: 500
+                    }
+                }
+         },
+          
             {
                 dataIndex: 'evento',
                 flex: 2,

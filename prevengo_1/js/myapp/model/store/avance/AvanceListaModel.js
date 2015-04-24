@@ -3,6 +3,7 @@ Ext.define('myapp.model.store.avance.AvanceListaModel', {
     idProperty: 'id',
     fields: [
         { name: 'id'}, 
+        { name: 'idAv'}, 
         { name: 'evento'},
         { name: 'actividad'},
         { name: 'descripcion'},

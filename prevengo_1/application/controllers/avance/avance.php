@@ -209,8 +209,9 @@ class Avance extends CI_Controller
             foreach ($avances->result_array() as $row){
               $tipo='Final';
               $event="<font color=#3F77E6> Evento: ".$row['evento']."</font>";
-                $data[] = array( 
-                            'id'          => $row['id'], 
+                $data[] = array(
+                            'idAct'       => $row['id'], 
+                            'idAv'        => $row['idAv'], 
                             'evento'      => $event,
                             'actividad'   => $row['actividad'],                  
                             'descripcion' => $row['descripcion'],
@@ -239,22 +240,30 @@ class Avance extends CI_Controller
     {
         //$Actividad= [];
 
-         $id = $this->input->post('record');
+         $idAct = $this->input->post('record');
+         $id= $this->input->post('idAvance');
          $estatus=3; // rechazar la actividad
-         
+          $estatusAct=2; 
             $data = array(  
                             'id'   => $id,                  
                             'estatus' => $estatus,
                 );
-         $resultdbd=$this->avance_model->cambiarEstatus($data);
-
-                    if($resultdbd){
+            
+            $data2 = array(  
+                            'id'   => $idAct,                  
+                            'estatusAct' => $estatus,
+                );
+            
+         $resultdAv=$this->avance_model->cambiarEstatus($data);
+         $resultdAv=$this->actividad_model->cambiarEstatus($data2);
+         
+                    if($resultAv and $resultAct){
                                 echo json_encode(array(
                                     "success"   => true,
                                     "msg"       => "El avance esta ha sido rechazado exitosamente." //modificado en la base de datos
                                 ));
                                     }
-                            else{
+                 else{
                                 echo json_encode(array(
                                     "success"   => false,
                                     "msg"       => "No se pudo rechazar el avance." //no se modifico en la base de datos

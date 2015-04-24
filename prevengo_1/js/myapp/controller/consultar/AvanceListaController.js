@@ -94,7 +94,8 @@ Ext.define('myapp.controller.consultar.AvanceListaController', {
                     url: BASE_URL+'avance/avance/rechazarActividad',
                     method: 'POST',
                     params: {
-                        record:record[0].get('id')
+                        record:record[0].get('id'),
+                        idAvance: record[0].get('idAv')
                     },
                     
                      success: function(result, request){
