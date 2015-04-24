@@ -238,26 +238,25 @@ class Avance extends CI_Controller
  
      public function rechazarAvance()
     {
-        //$Actividad= [];
-
+       
          $idAct = $this->input->post('record');
          $id= $this->input->post('idAvance');
          $estatus=3; // rechazar la actividad
-          $estatusAct=2; 
+         $estatusAct=2; 
             $data = array(  
-                            'id'   => $id,                  
+                            'id'      => $id,                  
                             'estatus' => $estatus,
                 );
             
             $data2 = array(  
-                            'id'   => $idAct,                  
-                            'estatusAct' => $estatus,
+                            'id'      => $idAct,                  
+                            'estatus' => $estatusAct,
                 );
             
          $resultdAv=$this->avance_model->cambiarEstatus($data);
-         $resultdAv=$this->actividad_model->cambiarEstatus($data2);
+         $resultdAct=$this->actividad_model->cambiarEstatus($data2);
          
-                    if($resultAv and $resultAct){
+                    if($resultdAv and $resultdAct){
                                 echo json_encode(array(
                                     "success"   => true,
                                     "msg"       => "El avance esta ha sido rechazado exitosamente." //modificado en la base de datos

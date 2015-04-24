@@ -27,8 +27,7 @@ Ext.define('myapp.controller.consultar.AvanceListaController', {
                 click: this.onClickAprobarAvance
             }, 
             "listaAvanceFinal button[name=btnRechazarAvance]":{
-                 click: this.onClickLimpiarAvance
-              },
+                 click: this.onClickRechazarAvance              },
               
 
         }); 
@@ -42,7 +41,7 @@ Ext.define('myapp.controller.consultar.AvanceListaController', {
         
         
         if(record[0]){
-                              
+                    console.log("id Actividad: ",record[0].get('id'),"id Avance ", record[0].get('idAv'));          
                 Ext.Ajax.request({
                     url: BASE_URL+'actividad/actividad/aprobarActividad',
                     method: 'POST',
@@ -88,10 +87,11 @@ Ext.define('myapp.controller.consultar.AvanceListaController', {
          record = grid.getSelectionModel().getSelection();
         // record = Ext.util.JSON.encode(record);
         
+        console.log("id Actividad: ",record[0].get('id'),"id Avance ", record[0].get('idAv'));
         
         if(record[0]){              
                 Ext.Ajax.request({
-                    url: BASE_URL+'avance/avance/rechazarActividad',
+                    url: BASE_URL+'avance/avance/rechazarAvance',
                     method: 'POST',
                     params: {
                         record:record[0].get('id'),
@@ -115,7 +115,7 @@ Ext.define('myapp.controller.consultar.AvanceListaController', {
                     failure: function(result, request){
                     var result = Ext.JSON.decode(result.responseText);   
                      loadingMask.hide();
-                            Ext.MessageBox.show({ title: 'Alerta', msg:data.msg , buttons: Ext.MessageBox.OK, icon: Ext.MessageBox.WARNING });
+                            Ext.MessageBox.show({ title: 'Alerta', msg:'Ha ocurrido un error' , buttons: Ext.MessageBox.OK, icon: Ext.MessageBox.WARNING });
                         }
 
 
