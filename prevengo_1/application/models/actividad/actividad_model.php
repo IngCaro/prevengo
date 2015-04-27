@@ -70,7 +70,7 @@ public function  cambiarEstatus($data){
     
  }
 
- public function cargarPlandeAccionDeEvento($id){
+ public function cargarPlandeAccionDeEvento(){
   
         $sql="SELECT ac.id AS id,
                      ac.descripcion AS descripcion
@@ -78,7 +78,7 @@ public function  cambiarEstatus($data){
                 WHERE
                       ac.estatus IN (1,2) 
                       AND ac.usuario=1  
-                      AND ac.evento=$id";
+                      AND ac.evento=1";
 
           $query = $this->db->query($sql);
                 $resultado = array();

@@ -1,6 +1,7 @@
 Ext.define('myapp.controller.actividad.ListaActividadController', {
     extend: 'Ext.app.Controller',
-    views: ['actividad.ListaActividad'
+    views: ['actividad.ListaActividad',
+             'actividad.WinPlanEvento'
             ],
      requires: [
         'myapp.util.Util'
@@ -16,7 +17,7 @@ Ext.define('myapp.controller.actividad.ListaActividadController', {
     init: function(application) {
         this.control({
             "listaActividad button[name=btnVerPlan]":{
-                click: this.onClickNuevoPlan
+                click: this.onClickVerPlan
             }
 
 
@@ -27,31 +28,19 @@ Ext.define('myapp.controller.actividad.ListaActividadController', {
          var grid = this.getListaActividad();
          record = grid.getSelectionModel().getSelection();
         // record = Ext.util.JSON.encode(record);
-        
-       
-        
         if(record[0]){
-                    
-                
+            
+           var win=Ext.create('myapp.view.actividad.WinPlanEvento');
+           win.show();
                              
         }else{
             Ext.MessageBox.show({ title: 'Informaci&oacute;n',
             msg: 'Debe seleccionar por lo menos un Avance',
             buttons: Ext.MessageBox.OK, icon: Ext.MessageBox.INFO });
         }
-   
-                        
-              
-    },// fin de la function
+       },// fin de la function
 
-    onClickNuevoPlan: function(button, e, options)
-    {
-           
-          var win=Ext.create('myapp.view.actividad.WinActividad');
-           win.show();
-          
-           
-    }, 
+
 
 
 

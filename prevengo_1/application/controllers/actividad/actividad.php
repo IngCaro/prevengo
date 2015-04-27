@@ -104,9 +104,9 @@ public function obtenerEventosConPlandeAccion()
 
 public function obtenerPlandeAccionDeEvento()
     {
-        $id = $this->input->post('id');
+        //$id = $this->input->post('id');
          $resultdbd=array();
-        if ($resultdbd=$this->actividad_model->cargarPlandeAccionDeEvento($id)){
+        if ($resultdbd=$this->actividad_model->cargarPlandeAccionDeEvento()){
                 $output = array(
                    'success'   => true,
                    'total'     => count($resultdbd),

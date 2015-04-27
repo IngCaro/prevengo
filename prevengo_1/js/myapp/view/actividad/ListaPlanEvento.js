@@ -1,16 +1,15 @@
-Ext.define('myapp.view.registrar.ListaActividad', {
+Ext.define('myapp.view.registrar.ListaPlanEvento', {
     extend: 'Ext.grid.Panel',
-    alias: 'widget.listaActividad',
-    itemId: 'listaActividad',
+    alias: 'widget.listaPlanEvento',
+    itemId: 'listaPlanEvento',
     requires: [
         'Ext.selection.CellModel',
         'Ext.selection.CheckboxModel',
         'Ext.ux.ajax.SimManager',
-        'Ext.ux.grid.FiltersFeature',
     ],
     features: [ ],
-    store: Ext.create('myapp.store.actividad.ActividadArcStore'),
-    selType: 'checkboxmodel',
+    store: Ext.create('myapp.store.actividad.ActividadEventoStore'),
+    
     emptyText: 'No hay Plan de Acción registrado',
     columnLines: true,
     initComponent: function () {
@@ -25,34 +24,22 @@ Ext.define('myapp.view.registrar.ListaActividad', {
                 hidden: true,
                 flex: 0.2,
                 text: '',
-                items: {
-                    xtype: 'textfield',
-                    flex: 1,
-                    margin: 2,
-                    enableKeyEvents: true
-                
-                }
+               
             }, {
                 dataIndex: 'descripcion',
                 flex: 1,
                 text: 'Descripcion',
-                items: {
-                    xtype: 'textfield',
-                    flex: 1,
-                    margin: 2,
-                    enableKeyEvents: true
-                   
-                }
+              
             },  
             ]
     },
     buildDockedItems: function () {
         return [{
-                xtype: 'pagingtoolbar',
+                xtype: 'toolbar',
                 dock: 'top',
                 store: this.store,
                 displayInfo: true,
-                  items: [{
+                  items:[{
                         xtype: 'button',
                         name: 'btnNuevoPlan',
                         text: 'Nuevo',

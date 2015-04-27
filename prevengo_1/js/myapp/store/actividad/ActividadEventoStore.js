@@ -1,4 +1,4 @@
-Ext.define('myapp.store.actividad.ActividadStore', {
+Ext.define('myapp.store.actividad.ActividadEventoStore', {
     extend: 'Ext.data.Store',
     model: 'myapp.model.store.actividad.ActividadListaModel',
     proxy: { 
