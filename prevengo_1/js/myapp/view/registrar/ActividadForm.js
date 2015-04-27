@@ -42,7 +42,7 @@ Ext.define('myapp.view.registrar.ActividadForm', {
                         },
                         {
                             xtype: 'datefield',
-                            x: 20,
+                            x: 100,
                             y: 70,
                             width: 300,
                             fieldLabel: 'Fecha del Preaviso:'
