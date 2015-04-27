@@ -16,7 +16,7 @@ Ext.define('myapp.controller.actividad.ListaActividadController', {
     init: function(application) {
         this.control({
             "listaActividad button[name=btnVerPlan]":{
-                click: this.onClickVerPlan
+                click: this.onClickNuevoPlan
             }
 
 
@@ -32,9 +32,7 @@ Ext.define('myapp.controller.actividad.ListaActividadController', {
         
         if(record[0]){
                     
-            Ext.MessageBox.show({ title: 'Informaci&oacute;n',
-            msg: 'Plan de Accion',
-            buttons: Ext.MessageBox.OK, icon: Ext.MessageBox.INFO });       
+                
                              
         }else{
             Ext.MessageBox.show({ title: 'Informaci&oacute;n',
@@ -44,7 +42,16 @@ Ext.define('myapp.controller.actividad.ListaActividadController', {
    
                         
               
-    },// fin de la function 
+    },// fin de la function
+
+    onClickNuevoPlan: function(button, e, options)
+    {
+           
+          var win=Ext.create('myapp.view.actividad.WinActividad');
+           win.show();
+          
+           
+    }, 
 
 
 

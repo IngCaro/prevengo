@@ -39,7 +39,7 @@ Ext.define('myapp.controller.consultar.AvanceListaController', {
          record = grid.getSelectionModel().getSelection();
         // record = Ext.util.JSON.encode(record);
         
-        console.log("id Actividad: ",record[0].get('id'),"id Avance ");      
+       
         
         if(record[0]){
                     

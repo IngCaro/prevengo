@@ -1,13 +1,13 @@
-Ext.define('myapp.view.registrar.Gridbuscar', {
+Ext.define('myapp.view.actividad.WinActividad', {
 extend: 'Ext.window.Window',
-  alias: 'widget.gridbuscar',
-  itemId: 'gridbuscar',
-  title:'Avance',
+  alias: 'widget.winActividad',
+  itemId: 'winActividad',
+  title:'Actividad',
   height: 350,
   width: 690,
   modal:true,
   requires: [
-   'myapp.view.registrar.Avance'
+   'myapp.view.registrar.ActividadForm'
   ],
   layout: {
    	type: 'fit'
@@ -20,7 +20,7 @@ extend: 'Ext.window.Window',
   },
   buildItem : function(){
     return [{
-      xtype: 'avance',
+      xtype: 'actividadForm',
     }]
   },
   buildDockedItems : function(){

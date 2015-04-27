@@ -1,7 +1,7 @@
 Ext.define('myapp.view.registrar.ActividadForm', {
   extend: 'Ext.form.Panel',
-  alias: 'widget.avance',
-  itemId: 'formAvance',
+  alias: 'widget.actividadForm',
+  itemId: 'actividadForm',
   requires:['Ext.form.*'],
     
   layout: {
@@ -46,19 +46,13 @@ Ext.define('myapp.view.registrar.ActividadForm', {
                             y: 70,
                             width: 300,
                             fieldLabel: 'Fecha del Preaviso:'
-                        }
-
-                       
-                    
-               
-
-             
+                        }   
 
         ]// fin del contenedor
     }]// el del Return
   },
      dockedItems:[{ 
-     {
+     
             xtype   : 'button',
             iconCls :'icon-limpiar',
             name      :'btnLimpiar',
@@ -74,7 +68,7 @@ Ext.define('myapp.view.registrar.ActividadForm', {
             scope   : this,
 
 
-          }]
+          
       }]
      
 });
