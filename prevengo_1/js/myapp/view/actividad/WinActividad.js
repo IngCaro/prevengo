@@ -4,7 +4,7 @@ extend: 'Ext.window.Window',
   itemId: 'winActividad',
   title:'Actividad',
   height: 350,
-  width: 690,
+  width: 550,
   modal:true,
   requires: [
    'myapp.view.registrar.ActividadForm'
@@ -27,7 +27,7 @@ extend: 'Ext.window.Window',
     return [{
       xtype : 'toolbar',
       flex  : 1,
-      dock  : 'top',
+      dock  : 'bottom',
       items: []
     }]
   }

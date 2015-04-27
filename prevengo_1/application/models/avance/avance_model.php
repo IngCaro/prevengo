@@ -47,6 +47,7 @@ public function consultarAvanceTipoFinal($actividad)
     else  {
         $boll=true;
                 }
+                
     return $boll;   
 }
 

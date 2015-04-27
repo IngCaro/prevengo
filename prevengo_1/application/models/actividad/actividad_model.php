@@ -38,11 +38,36 @@ class Actividad_model extends CI_Model{
 
     }
 
-     public function  cambiarEstatus($data){         
+public function  cambiarEstatus($data){         
          $this->db->set('estatus',$data['estatus']);
          $this->db->where('id',$data['id']);
          return  $this->db->update('actividad');
     }
+ 
+ public function cargarEventosConPlandeAccion(){
+  
+        $sql="SELECT ev.id AS id,
+                     ev.titulo AS evento,
+                     ev.descripcion AS descripcion,
+                     ev.fechatope AS fecha 
+                FROM evento AS ev 
+                INNER JOIN  actividad ON actividad.evento=ev.id 
+                WHERE ev.estatus IN (1,2) AND 
+                      actividad.estatus IN (1,2) AND 
+                      actividad.usuario =1 
+                ORDER BY ev.estatus,fecha ASC";
 
+          $query = $this->db->query($sql);
+                $resultado = array();
+                $resultdb=array();  
+                if ($query->num_rows() > 0){
+                foreach ($query->result() as $row){
+                    $resultado[] = $row;
+                }
+                return $resultado;
+                $query->free-result();
+              } 
+    
+ }
 
 }// fin de la clase

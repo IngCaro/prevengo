@@ -58,7 +58,7 @@ Ext.define('myapp.view.registrar.ListaActividad', {
                 }
             }, {
                 dataIndex: 'evento',
-                flex: 0.5,
+                flex: 1,
                 text: 'Evento',
                 items: {
                     xtype: 'textfield',
@@ -81,10 +81,39 @@ Ext.define('myapp.view.registrar.ListaActividad', {
                         buffer: 500
                     }
                 }
-            }, {
-                flex: 1,
+            }, 
+            {
+                dataIndex: 'descripcion',
+                flex: 2,
+                text: 'Descripcion',
+                items: {
+                    xtype: 'textfield',
+                    flex: 1,
+                    margin: 2,
+                    enableKeyEvents: true,
+                    listeners: {
+                        keyup: function () {
+                            var store = this.up('grid').store;
+                            store.clearFilter();
+                            if (this.value) {
+                                store.filter({
+                                    property: 'descripcion',
+                                    value: this.value,
+                                    anyMatch: true,
+                                    caseSensitive: false
+                                });
+                            }
+                        },
+                        buffer: 500
+                    }
+                }
+            },
+            
+            
+            {
+                flex: 0.5,
                 dataIndex: 'fecha',
-                text: 'Fecha',
+                text: 'Fecha de Realización',
                 items: {
                     xtype: 'textfield',
                     flex: 1,

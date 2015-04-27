@@ -4,6 +4,7 @@ Ext.define('myapp.model.store.actividad.ActividadListaGridModel', {
     fields: [
         { name: 'id'},
         { name: 'evento'},
+         { name: 'descripcion'},
         { name: 'fecha'},
     ] 
 });

@@ -84,6 +84,19 @@ class Actividad extends CI_Controller
                                 }
     }
 
+public function obtenerEventosConPlandeAccion()
+    {
+      
+         $resultdbd=array();
+        if ($resultdbd=$this->actividad_model->cargarEventosConPlandeAccion()){
+                $output = array(
+                   'success'   => true,
+                   'total'     => count($resultdbd),
+                   'data'      => array_splice($resultdbd,$this->input->get("start"),$this->input->get("limit"))
+                );
+           echo json_encode($output);
+        }
+    }//fin de la funcion
 
    
 
