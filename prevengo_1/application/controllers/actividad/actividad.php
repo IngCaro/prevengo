@@ -98,6 +98,23 @@ public function obtenerEventosConPlandeAccion()
         }
     }//fin de la funcion
 
+
+
+
+
+public function obtenerPlandeAccionDeEvento()
+    {
+        $id = $this->input->post('id');
+         $resultdbd=array();
+        if ($resultdbd=$this->actividad_model->cargarPlandeAccionDeEvento($id)){
+                $output = array(
+                   'success'   => true,
+                   'total'     => count($resultdbd),
+                   'data'      => array_splice($resultdbd,$this->input->get("start"),$this->input->get("limit"))
+                );
+           echo json_encode($output);
+        }
+    }//fin de la funcion
    
 
 }//fin del controller

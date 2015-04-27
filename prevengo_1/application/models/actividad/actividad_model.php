@@ -70,4 +70,26 @@ public function  cambiarEstatus($data){
     
  }
 
+ public function cargarPlandeAccionDeEvento($id){
+  
+        $sql="SELECT ac.id AS id,
+                     ac.descripcion AS descripcion
+                FROM actividad AS ac 
+                WHERE
+                      ac.estatus IN (1,2) 
+                      AND ac.usuario=1  
+                      AND ac.evento=$id";
+
+          $query = $this->db->query($sql);
+                $resultado = array();
+                $resultdb=array();  
+                if ($query->num_rows() > 0){
+                foreach ($query->result() as $row){
+                    $resultado[] = $row;
+                }
+                return $resultado;
+                $query->free-result();
+              } 
+    
+ }
 }// fin de la clase
