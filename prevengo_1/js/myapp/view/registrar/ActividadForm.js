@@ -61,10 +61,8 @@ Ext.define('myapp.view.registrar.ActividadForm', {
             xtype   : 'button',
             iconCls :'save',
             name    :'btnGuardar',
-           // itemId: 'addAvance', 
             text    : 'Guardar',
             disabled:false,
-            //formBind: true,
             scope   : this,
 
 
