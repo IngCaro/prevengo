@@ -76,7 +76,7 @@ class Avance extends CI_Controller
                                        
                          //Actualiza el estatus de la actividad a "En Revision"       
                       $dataActividad = array('id'    =>  $actividad,
-                                              'estatus'       =>  $estatusAct,
+                                             'estatus'       =>  $estatusAct,
                                               );
                       $resultad=$this->actividad_model->cambiarEstatus($dataActividad);
                    
@@ -209,8 +209,9 @@ class Avance extends CI_Controller
             foreach ($avances->result_array() as $row){
               $tipo='Final';
               $event="<font color=#3F77E6> Evento: ".$row['evento']."</font>";
-                $data[] = array( 
-                            'id'          => $row['id'], 
+                $data[] = array(
+                            'id'       => $row['id'], 
+                            'idAv'        => $row['idAv'], 
                             'evento'      => $event,
                             'actividad'   => $row['actividad'],                  
                             'descripcion' => $row['descripcion'],
@@ -228,11 +229,45 @@ class Avance extends CI_Controller
            echo json_encode($output);
         }else{
             echo json_encode(array(
-                "success"   => false
+                "success"   => false,
+                "msg" => "No hay datos para mostrar"
                 ));
         }
     } //fin Cargar Avance final
 
-
+ 
+     public function rechazarAvance()
+    {
+       
+         $idAct = $this->input->post('record');
+         $id= $this->input->post('idAvance');
+         $estatus=3; // rechazar la actividad
+         $estatusAct=2; 
+            $data = array(  
+                            'id'      => $id,                  
+                            'estatus' => $estatus,
+                );
+            
+            $data2 = array(  
+                            'id'      => $idAct,                  
+                            'estatus' => $estatusAct,
+                );
+            
+         $resultdAv=$this->avance_model->cambiarEstatus($data);
+         $resultdAct=$this->actividad_model->cambiarEstatus($data2);
+         
+                    if($resultdAv and $resultdAct){
+                                echo json_encode(array(
+                                    "success"   => true,
+                                    "msg"       => "El avance esta ha sido rechazado exitosamente." //modificado en la base de datos
+                                ));
+                                    }
+                 else{
+                                echo json_encode(array(
+                                    "success"   => false,
+                                    "msg"       => "No se pudo rechazar el avance." //no se modifico en la base de datos
+                                        ));
+                                }
+    }
 
 }//fin del controller

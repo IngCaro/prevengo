@@ -1,4 +1,4 @@
-Ext.define('myapp.view.registrar.Evento', {
+Ext.define('myapp.view.evento.Evento', {
   extend: 'Ext.form.Panel',
   alias: 'widget.evento',
   requires:['Ext.form.*'],
@@ -139,13 +139,6 @@ Ext.define('myapp.view.registrar.Evento', {
           items:[{
             xtype : 'tbfill'
           },{
-            xtype   : 'button',
-            iconCls : 'icon-buscar',
-            text    : 'Cancelar',
-            tooltip :'Catalogo Empleado',
-            name    :'btnCancelar',
-
-        },{
             xtype   : 'button',
             iconCls :'icon-limpiar',
             name      :'btnLimpiar',

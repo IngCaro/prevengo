@@ -21,12 +21,11 @@ Ext.define('myapp.view.consultar.ListaAvanceFinal', {
             enableGroupingMenu: false
        }],
     store: Ext.create('myapp.store.avance.AvanceFinalStore'),
-    emptyText   : 'No hay datos registrados',
+    viewConfig: {
+       
+    },
     selType: 'checkboxmodel',
     columnLines: true,
-    viewConfig: {
-
-    },
     initComponent: function () {
         var me = this;
         me.columns = me.buildColumns();
@@ -276,11 +275,12 @@ Ext.define('myapp.view.consultar.ListaAvanceFinal', {
                 dock: 'bottom',
                 store: this.store,
                 displayInfo: true,
-                items: [{
+                items: [
+                     {
                         xtype: 'button',
                         name: 'btnAprobarAvance',
-                        text: 'Aprobar Avance',
-                        iconCls: 'accept'
+                        text: 'Rechazar Avance',
+                        iconCls: 'cancel'
                     },
                     {
                         xtype: 'button',

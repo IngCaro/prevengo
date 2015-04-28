@@ -64,7 +64,7 @@ Ext.define('myapp.controller.avance.AvanceController', {
                         if (result.success){
                               grid.getView().refresh();
                                grid.getStore().load();
-                              Ext.MessageBox.show({ title: 'Alerta', msg:  result.msg, buttons: Ext.MessageBox.OK, icon: Ext.MessageBox.WARNING });
+                               Ext.MessageBox.show({ title: 'Alerta', msg:  result.msg, buttons: Ext.MessageBox.OK, icon: Ext.MessageBox.WARNING });
                                win.close();
                                
                             }

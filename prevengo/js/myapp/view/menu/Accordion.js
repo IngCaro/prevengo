@@ -10,6 +10,7 @@ Ext.define('myapp.view.menu.Accordion', {
     conCls: 'sitemap',
     title: 'Menú', 
     layout:'accordion',
+
     layoutConfig:{
         titleCollapse: false,
         animate: true,

@@ -24,6 +24,12 @@ public function actualizarAvance($dataAvance){
         return  $this->db->update('avance');
     }
 
+public function cambiarEstatus($dataAvance){
+       
+         $this->db->set($dataAvance);
+     	$this->db->where('id', $dataAvance['id']);
+        return  $this->db->update('avance');
+    }
 
 
 
@@ -41,6 +47,7 @@ public function consultarAvanceTipoFinal($actividad)
     else  {
         $boll=true;
                 }
+                
     return $boll;   
 }
 
@@ -70,7 +77,9 @@ public function consultarAvanceTipoFinal($actividad)
 
  public function consultarListaAvanceFinal(){
        
-        $sql="SELECT actividad.id AS id, evento.titulo AS evento, 
+        $sql="SELECT actividad.id AS id,
+                     av.id AS idAv,
+                     evento.titulo AS evento, 
                      av.descripcion AS descripcion, 
                      actividad.descripcion AS actividad, 
                      av.tipo AS tipo, 
@@ -83,7 +92,7 @@ public function consultarAvanceTipoFinal($actividad)
              INNER JOIN evento ON actividad.evento=evento.id 
              INNER JOIN bdgenerica.usuario ON av.usuario= bdgenerica.usuario.id 
              INNER JOIN bdgenerica.persona ON bdgenerica.usuario.cedula=bdgenerica.persona.cedula 
-             WHERE av.estatus=0 and av.tipo=0 
+             WHERE av.estatus=0 and av.tipo=0 and actividad.estatus=3
              ORDER BY av.fecharegistro, id ASC";
 
 

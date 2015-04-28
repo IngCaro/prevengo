@@ -6,6 +6,11 @@ class Actividad_model extends CI_Model{
 		parent::__construct();
 	}
     
+        public function guardarActividad($dataActividad){
+        return $this->db->insert('actividad',$dataActividad);
+    }
+        
+        
 	 public function cargarPlandeAccion(){
      
             $query = $this->db->query("select actividad.id, actividad.descripcion from actividad 
@@ -38,11 +43,64 @@ class Actividad_model extends CI_Model{
 
     }
 
-     public function  cambiarEstatus($data){         
-         $this->db->set($data);
-         $this->db->where('id',$data[0]);
+public function  cambiarEstatus($data){         
+         $this->db->set('estatus',$data['estatus']);
+         $this->db->where('id',$data['id']);
          return  $this->db->update('actividad');
     }
+ 
+ public function cargarEventosConPlandeAccion(){
+      
+    
+        $sql="SELECT ev.id AS id,
+                     ev.titulo AS evento,
+                     ev.descripcion AS descripcion,
+                     ev.fechatope AS fecha, 
+                     actividad.id AS actividad,
+                     actividad.descripcion AS descripEvento     
+                FROM evento AS ev 
+                INNER JOIN  actividad ON actividad.evento=ev.id 
+                WHERE ev.estatus IN (1,2) AND 
+                      actividad.estatus IN (1,2) AND 
+                      actividad.usuario =1
+                       
+                      
+                ORDER BY ev.estatus,fecha ASC";
 
+          $query = $this->db->query($sql);
+                $resultado = array();
+                $resultdb=array();  
+                if ($query->num_rows() > 0){
+                foreach ($query->result() as $row){
+                    $resultado[] = $row;
+                }
+                return $resultado;
+                $query->free-result();
+              } 
+    
+ }
 
+ public function cargarPlandeAccionDeEvento($id){
+  
+        $sql="SELECT ac.id AS id,
+                     ac.descripcion AS descripcion, 
+                     ac.fechatope AS fecha
+                FROM actividad AS ac 
+                WHERE
+                      ac.estatus IN (1,2) 
+                      AND ac.usuario=1  
+                      AND ac.evento=$id";
+
+          $query = $this->db->query($sql);
+                $resultado = array();
+                $resultdb=array();  
+                if ($query->num_rows() > 0){
+                foreach ($query->result() as $row){
+                    $resultado[] = $row;
+                }
+                return $resultado;
+                $query->free-result();
+              } 
+    
+ }
 }// fin de la clase
